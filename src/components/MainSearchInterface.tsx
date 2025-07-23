@@ -13,6 +13,8 @@ import {
   ArrowRightLeft, Calendar, Users, Search
 } from 'lucide-react';
 
+// Fixed: Replaced Passport with FileText icon - force rebuild
+
 const MainSearchInterface = () => {
   const [activeTab, setActiveTab] = useState('flights');
   const [tripType, setTripType] = useState('one-way');
