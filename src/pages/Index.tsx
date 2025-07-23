@@ -1,6 +1,6 @@
-import Navigation from '@/components/Navigation';
-import HeroSection from '@/components/HeroSection';
-import SearchSection from '@/components/SearchSection';
+import TopBar from '@/components/TopBar';
+import MainSearchInterface from '@/components/MainSearchInterface';
+import OffersSection from '@/components/OffersSection';
 import FeaturedPackages from '@/components/FeaturedPackages';
 import WhyChooseUs from '@/components/WhyChooseUs';
 import VisaInsuranceSection from '@/components/VisaInsuranceSection';
@@ -9,10 +9,10 @@ import Footer from '@/components/Footer';
 const Index = () => {
   return (
     <div className="min-h-screen">
-      <Navigation />
+      <TopBar />
       <main>
-        <HeroSection />
-        <SearchSection />
+        <MainSearchInterface />
+        <OffersSection />
         <FeaturedPackages />
         <WhyChooseUs />
         <VisaInsuranceSection />
