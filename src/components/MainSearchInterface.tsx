@@ -10,8 +10,9 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { 
   Plane, Building, Home, Package, Train, Bus, Car, 
   MapPin, CreditCard, FileText, Ship, DollarSign, Shield,
-  ArrowRightLeft, Calendar, Users, Search
+  ArrowRightLeft, Calendar, Users, Search, Sparkles
 } from 'lucide-react';
+import planeImage from '@/assets/plane-flying.jpg';
 
 // Fixed: Replaced Passport with FileText icon - force rebuild
 
@@ -45,21 +46,35 @@ const MainSearchInterface = () => {
 
   return (
     <section className="relative min-h-screen bg-cover bg-center" 
-             style={{ backgroundImage: `url('https://images.unsplash.com/photo-1500375592092-40eb2168fd21')` }}>
-      <div className="absolute inset-0 bg-black/40"></div>
+             style={{ backgroundImage: `url(${planeImage})` }}>
+      <div className="absolute inset-0 bg-gradient-to-b from-blue-900/20 via-blue-600/30 to-blue-900/60"></div>
+      
+      {/* Floating clouds animation */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-32 h-16 bg-white/10 rounded-full animate-pulse"></div>
+        <div className="absolute top-40 right-20 w-24 h-12 bg-white/15 rounded-full animate-pulse delay-1000"></div>
+        <div className="absolute bottom-40 left-1/4 w-40 h-20 bg-white/8 rounded-full animate-pulse delay-2000"></div>
+      </div>
       
       <div className="relative z-10 pt-8 pb-16">
         <div className="max-w-6xl mx-auto px-4">
           {/* Main Search Card */}
-          <Card className="bg-background/95 backdrop-blur-sm shadow-2xl rounded-2xl overflow-hidden">
+          <Card className="bg-background/95 backdrop-blur-md shadow-2xl rounded-3xl overflow-hidden border border-white/20 animate-fade-in">
             {/* Service Icons */}
             <div className="p-6 pb-0">
+              <div className="flex items-center justify-center mb-4">
+                <div className="flex items-center gap-2 text-primary">
+                  <Sparkles className="h-5 w-5 animate-pulse" />
+                  <span className="text-sm font-medium">Choose Your Adventure</span>
+                  <Sparkles className="h-5 w-5 animate-pulse" />
+                </div>
+              </div>
               <div className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-12 gap-4 mb-6">
                 {serviceIcons.map((service) => (
                   <div
                     key={service.id}
-                    className={`relative flex flex-col items-center p-3 rounded-lg cursor-pointer transition-all duration-200 hover:bg-primary/10 ${
-                      service.id === activeTab ? 'bg-primary/10 text-primary' : 'text-muted-foreground hover:text-primary'
+                    className={`relative flex flex-col items-center p-3 rounded-xl cursor-pointer transition-all duration-300 hover:scale-105 hover:bg-primary/15 hover:shadow-lg group ${
+                      service.id === activeTab ? 'bg-primary/15 text-primary scale-105 shadow-md' : 'text-muted-foreground hover:text-primary'
                     }`}
                     onClick={() => setActiveTab(service.id)}
                   >
@@ -68,7 +83,7 @@ const MainSearchInterface = () => {
                         new
                       </span>
                     )}
-                    <service.icon className="h-6 w-6 mb-2" />
+                    <service.icon className="h-6 w-6 mb-2 group-hover:animate-bounce" />
                     <span className="text-xs text-center font-medium leading-tight">{service.label}</span>
                   </div>
                 ))}
@@ -203,8 +218,9 @@ const MainSearchInterface = () => {
                   </div>
 
                   {/* Search Button */}
-                  <Button className="w-full bg-blue-500 hover:bg-blue-600 text-white text-lg py-6 rounded-xl font-semibold">
-                    SEARCH
+                  <Button className="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white text-lg py-6 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] group">
+                    <Search className="mr-2 h-5 w-5 group-hover:animate-pulse" />
+                    SEARCH FLIGHTS
                   </Button>
                 </div>
               )}
@@ -213,27 +229,31 @@ const MainSearchInterface = () => {
 
           {/* Bottom Services */}
           <div className="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4">
-            <Card className="bg-background/90 backdrop-blur-sm p-4 text-center hover-lift cursor-pointer">
-              <MapPin className="h-8 w-8 text-primary mx-auto mb-2" />
+            <Card className="bg-background/90 backdrop-blur-md p-4 text-center hover:scale-105 transition-all duration-300 cursor-pointer border border-white/20 group">
+              <MapPin className="h-8 w-8 text-primary mx-auto mb-2 group-hover:animate-bounce" />
               <h3 className="font-semibold mb-1">Where2Go</h3>
+              <div className="w-full h-1 bg-gradient-to-r from-primary/0 via-primary to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity rounded"></div>
             </Card>
             
-            <Card className="bg-background/90 backdrop-blur-sm p-4 text-center hover-lift cursor-pointer">
-              <Shield className="h-8 w-8 text-primary mx-auto mb-2" />
+            <Card className="bg-background/90 backdrop-blur-md p-4 text-center hover:scale-105 transition-all duration-300 cursor-pointer border border-white/20 group">
+              <Shield className="h-8 w-8 text-primary mx-auto mb-2 group-hover:animate-bounce" />
               <h3 className="font-semibold mb-1">Insurance</h3>
               <p className="text-xs text-muted-foreground">For International Trips</p>
+              <div className="w-full h-1 bg-gradient-to-r from-primary/0 via-primary to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity rounded"></div>
             </Card>
             
-            <Card className="bg-background/90 backdrop-blur-sm p-4 text-center hover-lift cursor-pointer">
-              <Plane className="h-8 w-8 text-primary mx-auto mb-2" />
+            <Card className="bg-background/90 backdrop-blur-md p-4 text-center hover:scale-105 transition-all duration-300 cursor-pointer border border-white/20 group">
+              <Plane className="h-8 w-8 text-primary mx-auto mb-2 group-hover:animate-bounce" />
               <h3 className="font-semibold mb-1">Explore International Flights</h3>
               <p className="text-xs text-muted-foreground">Cheapest Flights to Paris, Bali, Tokyo & more</p>
+              <div className="w-full h-1 bg-gradient-to-r from-primary/0 via-primary to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity rounded"></div>
             </Card>
             
-            <Card className="bg-background/90 backdrop-blur-sm p-4 text-center hover-lift cursor-pointer">
-              <Package className="h-8 w-8 text-primary mx-auto mb-2" />
+            <Card className="bg-background/90 backdrop-blur-md p-4 text-center hover:scale-105 transition-all duration-300 cursor-pointer border border-white/20 group">
+              <Package className="h-8 w-8 text-primary mx-auto mb-2 group-hover:animate-bounce" />
               <h3 className="font-semibold mb-1">MICE</h3>
               <p className="text-xs text-muted-foreground">Offsites, Events & Meetings</p>
+              <div className="w-full h-1 bg-gradient-to-r from-primary/0 via-primary to-primary/0 opacity-0 group-hover:opacity-100 transition-opacity rounded"></div>
             </Card>
           </div>
         </div>
