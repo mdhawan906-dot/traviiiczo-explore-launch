@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+/* Traviiczo Travel Company Design System
 All colors MUST be HSL.
 */
 
@@ -17,8 +17,11 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Traviiczo Brand Colors */
+    --primary: 230 62% 48%;  /* #2F4DC5 - Traviiczo Blue */
+    --primary-foreground: 0 0% 100%;
+    --primary-hover: 230 62% 42%;
+    --primary-light: 230 62% 92%;
 
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
@@ -26,15 +29,29 @@ All colors MUST be HSL.
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 230 45% 85%;
+    --accent-foreground: 230 62% 25%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: 230 62% 48%;
+
+    /* Travel Theme Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(230 62% 48%), hsl(200 70% 55%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(230 62% 97%));
+    --gradient-section: linear-gradient(180deg, hsl(0 0% 100%), hsl(230 25% 98%));
+
+    /* Shadows */
+    --shadow-soft: 0 4px 20px hsl(230 62% 48% / 0.1);
+    --shadow-card: 0 8px 30px hsl(230 62% 48% / 0.15);
+    --shadow-button: 0 4px 15px hsl(230 62% 48% / 0.3);
+
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
     --radius: 0.5rem;
 
@@ -100,6 +117,41 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+  }
+}
+
+@layer components {
+  /* Travel Buttons */
+  .btn-travel {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+  
+  .btn-travel-primary {
+    @apply btn-travel bg-primary text-primary-foreground hover:bg-primary-hover shadow-[var(--shadow-button)] hover:shadow-lg hover:scale-105;
+  }
+  
+  .btn-travel-secondary {
+    @apply btn-travel border-2 border-primary text-primary bg-transparent hover:bg-primary hover:text-primary-foreground;
+  }
+
+  /* Travel Cards */
+  .travel-card {
+    @apply bg-card rounded-xl p-6 shadow-[var(--shadow-card)] transition-all duration-300 hover:scale-105 hover:shadow-xl;
+  }
+
+  /* Section Backgrounds */
+  .section-gradient {
+    @apply bg-gradient-to-b from-background to-accent/30;
+  }
+
+  /* Hover Animations */
+  .hover-lift {
+    @apply transition-all duration-300 hover:scale-105 hover:shadow-lg;
+  }
+
+  /* Smooth Scroll */
+  html {
+    scroll-behavior: smooth;
   }
 }
