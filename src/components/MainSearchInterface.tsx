@@ -12,6 +12,7 @@ import {
   MapPin, CreditCard, FileText, Ship, DollarSign, Shield,
   ArrowRightLeft, Calendar, Users, Search, Sparkles
 } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import planeImage from '@/assets/plane-flying.jpg';
 
 // Fixed: Replaced Passport with FileText icon - force rebuild
@@ -23,7 +24,7 @@ const MainSearchInterface = () => {
 
   const serviceIcons = [
     { id: 'flights', icon: Plane, label: 'Flights', active: true },
-    { id: 'hotels', icon: Building, label: 'Hotels' },
+    { id: 'hotels', icon: Building, label: 'Hotels', path: '/hotels' },
     { id: 'homestays', icon: Home, label: 'Homestays & Villas' },
     { id: 'packages', icon: Package, label: 'Holiday Packages' },
     { id: 'trains', icon: Train, label: 'Trains' },
@@ -71,21 +72,39 @@ const MainSearchInterface = () => {
               </div>
               <div className="grid grid-cols-4 md:grid-cols-6 lg:grid-cols-12 gap-4 mb-6">
                 {serviceIcons.map((service) => (
-                  <div
-                    key={service.id}
-                    className={`relative flex flex-col items-center p-3 rounded-xl cursor-pointer transition-all duration-300 hover:scale-105 hover:bg-primary/15 hover:shadow-lg group ${
-                      service.id === activeTab ? 'bg-primary/15 text-primary scale-105 shadow-md' : 'text-muted-foreground hover:text-primary'
-                    }`}
-                    onClick={() => setActiveTab(service.id)}
-                  >
-                    {service.new && (
-                      <span className="absolute -top-1 -right-1 bg-pink-500 text-white text-xs px-1.5 py-0.5 rounded-full">
-                        new
-                      </span>
-                    )}
-                    <service.icon className="h-6 w-6 mb-2 group-hover:animate-bounce" />
-                    <span className="text-xs text-center font-medium leading-tight">{service.label}</span>
-                  </div>
+                  service.path ? (
+                    <Link
+                      key={service.id}
+                      to={service.path}
+                      className={`relative flex flex-col items-center p-3 rounded-xl cursor-pointer transition-all duration-300 hover:scale-105 hover:bg-primary/15 hover:shadow-lg group ${
+                        service.id === activeTab ? 'bg-primary/15 text-primary scale-105 shadow-md' : 'text-muted-foreground hover:text-primary'
+                      }`}
+                    >
+                      {service.new && (
+                        <span className="absolute -top-1 -right-1 bg-pink-500 text-white text-xs px-1.5 py-0.5 rounded-full">
+                          new
+                        </span>
+                      )}
+                      <service.icon className="h-6 w-6 mb-2 group-hover:animate-bounce" />
+                      <span className="text-xs text-center font-medium leading-tight">{service.label}</span>
+                    </Link>
+                  ) : (
+                    <div
+                      key={service.id}
+                      className={`relative flex flex-col items-center p-3 rounded-xl cursor-pointer transition-all duration-300 hover:scale-105 hover:bg-primary/15 hover:shadow-lg group ${
+                        service.id === activeTab ? 'bg-primary/15 text-primary scale-105 shadow-md' : 'text-muted-foreground hover:text-primary'
+                      }`}
+                      onClick={() => setActiveTab(service.id)}
+                    >
+                      {service.new && (
+                        <span className="absolute -top-1 -right-1 bg-pink-500 text-white text-xs px-1.5 py-0.5 rounded-full">
+                          new
+                        </span>
+                      )}
+                      <service.icon className="h-6 w-6 mb-2 group-hover:animate-bounce" />
+                      <span className="text-xs text-center font-medium leading-tight">{service.label}</span>
+                    </div>
+                  )
                 ))}
               </div>
             </div>
