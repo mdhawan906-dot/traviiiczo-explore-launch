@@ -57,10 +57,10 @@ const MainSearchInterface = () => {
         <div className="absolute bottom-40 left-1/4 w-40 h-20 bg-white/8 rounded-full animate-pulse delay-2000"></div>
       </div>
       
-      <div className="relative z-10 pt-8 pb-16">
-        <div className="max-w-6xl mx-auto px-4">
+      <div className="relative z-10 pt-12 pb-20">
+        <div className="max-w-4xl mx-auto px-4">
           {/* Main Search Card */}
-          <Card className="bg-background/95 backdrop-blur-md shadow-2xl rounded-3xl overflow-hidden border border-white/20 animate-fade-in">
+          <Card className="bg-background/90 backdrop-blur-md shadow-xl rounded-2xl overflow-hidden border border-white/20 animate-fade-in">
             {/* Service Icons */}
             <div className="p-6 pb-0">
               <div className="flex items-center justify-center mb-4">
